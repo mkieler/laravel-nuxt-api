@@ -17,7 +17,7 @@ class CustomPaginator extends LengthAwarePaginator
     protected function resolveAvailableFilters()
     {
         $model = $this->first();
-        if (method_exists($model, 'getAvailableFilters')) {
+        if (is_object($model) && method_exists($model, 'getAvailableFilters')) {
             return $model->getAvailableFilters();
         } else {
             return [];
