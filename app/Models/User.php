@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    protected $appends = ['first_name', 'last_name'];
+
+    public function getFirstNameAttribute(): string
+    {
+        return explode(' ', $this->name)[0];
+    }
+
+    public function getLastNameAttribute(): string
+    {
+        $exploded = explode(' ', $this->name);
+        return array_pop($exploded);
+    }
 }
