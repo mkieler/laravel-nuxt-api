@@ -10,4 +10,11 @@ class UserController extends Controller
     {
         return $request->user();
     }
+
+    public function update(Request $request)
+    {
+        $user = $request->user();
+        $user->update($request->all());
+        return $user;
+    }
 }

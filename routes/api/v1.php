@@ -8,5 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('user', [UserController::class, 'getAuthenticatedUser']);
+Route::put('user', [UserController::class, 'update']);
 
 Route::get('test-data', [TestDataController::class, 'getTestData']);
