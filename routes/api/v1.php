@@ -7,7 +7,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('user', [UserController::class, 'getAuthenticatedUser']);
-Route::put('user', [UserController::class, 'update']);
+/*
+|--------------------------------------------------------------------------
+| User API Routes
+|--------------------------------------------------------------------------
+|
+| This is the user API routes used called by the frontend to interact with the user data.
+|
+*/
+Route::controller(UserController::class)
+->prefix('/user')
+->group(function () {
+    Route::get('/', 'getAuthenticatedUser');
+    Route::put('/', 'update');
+    Route::get('/email-notification-settings', 'getEmailNotificationSettings');
+    Route::get('/app-notification-settings', 'getAppNotificationSettings');
+    Route::put('/email-notification-settings', 'updateEmailNotificationSettings');
+    Route::put('/app-notification-settings', 'updateAppNotificationSettings');
+});
+
+
+
 
 Route::get('test-data', [TestDataController::class, 'getTestData']);
