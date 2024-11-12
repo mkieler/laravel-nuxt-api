@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('app_notification_settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->index()->constrained()->cascadeOnDelete();
             $table->string('type');
             $table->boolean('value');
             $table->timestamps();
