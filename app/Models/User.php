@@ -76,4 +76,9 @@ class User extends Authenticatable
         // Hvis der ikke er nogen indstilling, antag at brugeren ønsker notifikationen
         return true;
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
